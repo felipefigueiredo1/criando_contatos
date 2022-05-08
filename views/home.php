@@ -61,10 +61,7 @@
                 </div>
             </form>
             <div class="retorno mt-4">
-                <?php 
-                $retorno = (isset($_GET["retorno"]) ? $_GET["retorno"] : "");
-                echo $retorno;
-                ?>
+                <?php $retorno = (isset($_GET["retorno"]) ? $_GET["retorno"] : ""); echo $retorno; ?>
             </div>
         </div>
         
@@ -72,6 +69,7 @@
         <h5>Gerenciar Contatos</h5>
             Buscar contato
             <input type="text" id="buscando" name="buscando" class="form-control">
+            <?php $retornoEditar = (isset($_GET["retornoEditar"]) ? $_GET["retornoEditar"] : ""); echo $retornoEditar; ?>
             <table class="table">
                 <thead>
                     <tr>

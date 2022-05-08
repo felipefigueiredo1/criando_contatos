@@ -132,8 +132,8 @@ class WebController
             $telefone = $_POST['telefone'];
             
         } else {
-            $retorno = "<p class='vermelho'>Campos inválidos!</p>";
-            header('location: '.URL_BASE."?retorno=$retorno");
+            $retornoEditar = "<p class='vermelho'>Campos inválidos!</p>";
+            header('location: '.URL_BASE."?retornoEditar=$retornoEditar");
             exit();
         }
         
@@ -149,14 +149,14 @@ class WebController
         
         // Verifica se foi informado todos os digitos corretamente
         if (strlen($cpf) != 11) {
-            $retorno ="<p class='vermelho'>CPF inválido!</p>";
-            header('location: '.URL_BASE."?retorno=$retorno");
+            $retornoEditar ="<p class='vermelho'>CPF inválido!</p>";
+            header('location: '.URL_BASE."?retornoEditar=$retornoEditar");
             exit();
         }
         // Verifica se foi informada uma sequência de digitos repetidos. Ex: 111.111.111-11
         if (preg_match('/(\d)\1{10}/', $cpf)) {
-            $retorno ="<p class='vermelho'>CPF inválido!</p>";
-            header('location: '.URL_BASE."?retorno=$retorno");
+            $retornoEditar ="<p class='vermelho'>CPF inválido!</p>";
+            header('location: '.URL_BASE."?retornoEditar=$retornoEditar");
             exit();
         }
         // Faz o calculo para validar o CPF
@@ -166,8 +166,8 @@ class WebController
             }
             $d = ((10 * $d) % 11) % 10;
             if ($cpf{$c} != $d) {
-                $retorno = "<p class='vermelho'>CPF inválido!</p>";
-                header('location: '.URL_BASE."?retorno=$retorno");
+                $retornoEditar = "<p class='vermelho'>CPF inválido!</p>";
+                header('location: '.URL_BASE."?retornoEditar=$retornoEditar");
                 exit();
             }
         }
@@ -181,8 +181,8 @@ class WebController
         if (strlen($_POST['email']) > 0) {
             $email = $_POST['email'];
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $retorno = "<p class='vermelho'>E-mail inválido!</p>";
-                header('location: '.URL_BASE."?retorno=$retorno");
+                $retornoEditar = "<p class='vermelho'>E-mail inválido!</p>";
+                header('location: '.URL_BASE."?retornoEditar=$retornoEditar");
                 exit();
             }
         } 
@@ -191,8 +191,8 @@ class WebController
         if (strlen($_POST['segundoEmail']) > 0 ) {
             $segundoEmail = $_POST['segundoEmail'];
             if (!filter_var($segundoEmail, FILTER_VALIDATE_EMAIL)) {
-                $retorno = "<p class='vermelho'>E-mail inválido!</p>";
-                header('location: '.URL_BASE."?retorno=$retorno");
+                $retornoEditar = "<p class='vermelho'>E-mail inválido!</p>";
+                header('location: '.URL_BASE."?retornoEditar=$retornoEditar");
                 exit();
             }
         }
@@ -206,8 +206,8 @@ class WebController
         $user->segundo_email = $segundoEmail;
         $user->save();
 
-        $retorno = "<p class='verde'>Contato editado com sucesso!</p>";
-        header('location: '.URL_BASE."?retorno=$retorno");
+        $retornoEditar = "<p class='verde'>Contato editado com sucesso!</p>";
+        header('location: '.URL_BASE."?retornoEditar=$retornoEditar");
         exit();
     }
 
@@ -243,7 +243,8 @@ class WebController
             $user->destroy();
         } 
         
-        header('location: '.URL_BASE);
+        $retornoEditar = "<p class='verde'>Contato excluido com sucesso!</p>";
+        header('location: '.URL_BASE."?retornoEditar=$retornoEditar");
         exit();
     }
 

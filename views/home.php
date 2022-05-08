@@ -27,6 +27,7 @@
     <main>
         <div class="container mt-4">
             <form class="row g-3"action="<?= $url; ?>" method="POST">
+                <input type="hidden" id="url" value="<?php URL_BASE ?>">
                 <h5>Criar contato novo</h5>
                 <div class="col-md-4">
                     <label for="nome">Nome<span>*</span></label>
@@ -113,7 +114,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
 
 <script>
-const URL_BASE = 'http://localhost/teste/esferas_teste/'
+const URL_BASE = $("#url").val()
 
 $(document).ready(function(){
     mascara()

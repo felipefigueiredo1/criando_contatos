@@ -1,4 +1,5 @@
 <?php
+//Defina sua URL da raiz do projeto
 define("URL_BASE", "http://localhost/teste/esferas_teste/");
 define("DATA_LAYER_CONFIG", [
     "driver" => "mysql",

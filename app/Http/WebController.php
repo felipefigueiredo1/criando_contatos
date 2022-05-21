@@ -225,7 +225,6 @@ class WebController
 
         $user = (new User())->find("nome LIKE '%".$search['search']."%' OR NOT EXISTS(SELECT * FROM users)")->fetch(true);
         echo json_encode($user);
-        
            
     }
 
